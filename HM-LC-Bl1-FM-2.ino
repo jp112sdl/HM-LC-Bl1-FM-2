@@ -89,8 +89,6 @@ class BlChannel : public BlindChannel<Hal, PEERS_PER_CHANNEL, BlindList0> {
     }
 
     void motorUp () {
-      DPRINT("motorUp on Pin ");
-      DDECLN(on_relay_pin);
       digitalWrite(dir_relay_pin, HIGH);
       digitalWrite(on_relay_pin, HIGH);
     }
@@ -106,10 +104,6 @@ class BlChannel : public BlindChannel<Hal, PEERS_PER_CHANNEL, BlindList0> {
     }
 
     void init (uint8_t op, uint8_t dp) {
-      DPRINT("init ON_RELAY_PIN =");
-      DDECLN(op);
-      DPRINT("init DIR_RELAY_PIN =");
-      DDECLN(dp);
       pinMode(op, OUTPUT);
       pinMode(dp, OUTPUT);
       motorStop();
