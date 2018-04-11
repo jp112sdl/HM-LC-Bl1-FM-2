@@ -13,26 +13,25 @@
 
 #include "Blind2.h"
 
-
 // we use a Pro Mini
 // Arduino pin for the LED
 // D4 == PIN 4 on Pro Mini
-#define LED_PIN 4
+#define LED_PIN 5
 // Arduino pin for the config button
 // B0 == PIN 8 on Pro Mini
 #define CONFIG_BUTTON_PIN 8
 
-#define ON_RELAY_PIN 17
-#define DIR_RELAY_PIN 16
+#define ON_RELAY_PIN 14
+#define DIR_RELAY_PIN 15
 
-#define ON_RELAY2_PIN 14
-#define DIR_RELAY2_PIN 15
+#define ON_RELAY2_PIN 16
+#define DIR_RELAY2_PIN 17
 
-#define UP_BUTTON_PIN 6
-#define DOWN_BUTTON_PIN 3
+#define UP_BUTTON_PIN 7
+#define DOWN_BUTTON_PIN 4
 
-#define UP_BUTTON2_PIN 7
-#define DOWN_BUTTON2_PIN 9
+#define UP_BUTTON2_PIN 6
+#define DOWN_BUTTON2_PIN 3
 
 // number of available peers per channel
 #define PEERS_PER_CHANNEL 6
