@@ -203,7 +203,7 @@ public:
     level = l;
     DPRINT("Level: ");
     DDECLN(level);
-    triggerChanged(decis2ticks(list1.statusInfoMinDly()));
+    triggerChanged(decis2ticks(list1.statusInfoMinDly()) * 5);
     list1.dump();
   }
 
