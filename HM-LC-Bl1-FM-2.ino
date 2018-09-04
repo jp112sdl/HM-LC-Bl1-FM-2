@@ -15,7 +15,6 @@
 
 // we use a Pro Mini
 // Arduino pin for the LED
-// D4 == PIN 4 on Pro Mini
 #define LED_PIN 5
 // Arduino pin for the config button
 // B0 == PIN 8 on Pro Mini
@@ -53,7 +52,7 @@ const struct DeviceInfo PROGMEM devinfo = {
    Configure the used hardware
 */
 typedef AvrSPI<10, 11, 12, 13> RadioSPI;
-typedef AskSin<StatusLed<4>, NoBattery, Radio<RadioSPI, 2> > Hal;
+typedef AskSin<StatusLed<LED_PIN>, NoBattery, Radio<RadioSPI, 2> > Hal;
 
 DEFREGISTER(BlindReg0, MASTERID_REGS, DREG_INTKEY, DREG_CONFBUTTONTIME, DREG_LOCALRESETDISABLE)
 
