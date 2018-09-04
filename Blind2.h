@@ -500,8 +500,10 @@ class BlindChannel : public Channel<HalType, BlindList1, BlindList3, EmptyList, 
       DPRINTLN("configChanged");
       DPRINT("statusInfoMinDly = ");
       DDECLN(list1.statusInfoMinDly());
-      DPRINT("refRunningTimeTopButton = ");
+      DPRINT("refRunningTimeTopBottom = ");
       DDECLN(list1.refRunningTimeTopBottom());
+      DPRINT("refRunningTimeBottomTop = ");
+      DDECLN(list1.refRunningTimeBottomTop());
       DPRINT("transmitTryMax = ");
       DDECLN(list1.transmitTryMax());
     }
