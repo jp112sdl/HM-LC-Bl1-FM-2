@@ -11,7 +11,7 @@
 #include <AskSinPP.h>
 #include <LowPower.h>
 
-#include "Blind2.h"
+#include <Blind.h>
 
 // we use a Pro Mini
 // Arduino pin for the LED
@@ -67,10 +67,15 @@ class BlindList0 : public RegList0<BlindReg0> {
     }
 };
 
-class BlChannel : public BlindChannel<Hal, PEERS_PER_CHANNEL, BlindList0> {
+
+class BlChannel : public ActorChannel<Hal, BlindList1, BlindList3, PEERS_PER_CHANNEL, BlindList0, BlindStateMachine> {
+  private:
+    uint8_t on_relay_pin;
+    uint8_t dir_relay_pin;
   public:
-    typedef BlindChannel<Hal, PEERS_PER_CHANNEL, BlindList0> BaseChannel;
-    BlChannel () {}
+    typedef ActorChannel<Hal, BlindList1, BlindList3, PEERS_PER_CHANNEL, BlindList0, BlindStateMachine> BaseChannel;
+
+    BlChannel () : on_relay_pin(0), dir_relay_pin(0) {}
     virtual ~BlChannel () {}
 
     virtual void switchState(uint8_t oldstate, uint8_t newstate, uint32_t stateDelay) {
@@ -102,12 +107,15 @@ class BlChannel : public BlindChannel<Hal, PEERS_PER_CHANNEL, BlindList0> {
     }
 
     void init (uint8_t op, uint8_t dp) {
-      pinMode(op, OUTPUT);
-      pinMode(dp, OUTPUT);
+      on_relay_pin = op;
+      dir_relay_pin = dp;
+      pinMode(on_relay_pin, OUTPUT);
+      pinMode(dir_relay_pin, OUTPUT);
       motorStop();
-      BaseChannel::init(op, dp);
+      BaseChannel::init();
     }
 };
+
 
 // setup the device with channel type and number of channels
 typedef MultiChannelDevice<Hal, BlChannel, 2, BlindList0> BlindType;
